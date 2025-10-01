@@ -1,7 +1,9 @@
 body {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  background: #f5f7fb;
   margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0A1D37, #004C99);
+  color: #ffffff;
+  text-align: center;
 }
 
 .page-header {
@@ -57,36 +59,44 @@ body {
   box-shadow: 0 2px 4px rgba(26,77,171,0.2);
 }
 
+
 .content-section {
-  max-width: 900px;
   margin: 30px auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  width: 95%;
+  max-width: 1100px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 15px;
   padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  overflow-x: auto;
 }
+
 .content-section h2 {
-  color: #1a4dab;
-  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #B0D8FF;
+  margin-bottom: 15px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 500px;
 }
+
 th, td {
-  padding: 10px;
+  padding: 12px 8px;
   text-align: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
+
 th {
-  background: #f0f4f9;
-  color: #1a4dab;
+  background: rgba(255,255,255,0.15);
   font-weight: 600;
-}
-tr:nth-child(even) td {
-  background: #fafbfd;
+  color: #ffffff;
 }
 
 .schedule-list {
@@ -104,11 +114,32 @@ tr:nth-child(even) td {
 .hidden {
   display: none;
 }
+.no-schedule {
+  font-size: 1.2rem;
+  color: #B0D8FF;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}
 
-@media(max-width: 600px) {
-  .nav-btn {
-    min-width: 120px;
-    padding: 8px 12px;
-    font-size: 0.9rem;
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  table {
+    font-size: 14px;
+    min-width: 400px;
+  }
+
+  th, td {
+    padding: 8px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  table {
+    font-size: 12px;
+    min-width: 350px;
   }
 }
