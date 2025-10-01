@@ -174,6 +174,77 @@
 
 
   <script>
+    function sortStandings() {
+      document.querySelectorAll('#standings table').forEach(table => {
+        const tbody = table.tBodies[0];
+        const rows = Array.from(tbody.rows);
+    
+        const data = rows.map(r => ({
+          team: r.cells[1].textContent,
+          wins: parseInt(r.cells[2].textContent),
+          losses: parseInt(r.cells[3].textContent),
+          left: parseInt(r.cells[4].textContent)
+        }));
+    
+        data.sort((a, b) => b.wins - a.wins);
+    
+        tbody.innerHTML = '';
+    
+        data.forEach((team, idx) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${idx + 1}</td>
+            <td>${team.team}</td>
+            <td>${team.wins}</td>
+            <td>${team.losses}</td>
+            <td>${team.left}</td>
+          `;
+          if (idx === 0) tr.style.backgroundColor = '#ffd700';
+          else if (idx === 1) tr.style.backgroundColor = '#c0c0c0';
+          else if (idx === 2) tr.style.backgroundColor = '#cd7f32';
+    
+          tbody.appendChild(tr);
+        });
+      });
+    }
+    
+    function sortPlayerTables() {
+      document.querySelectorAll('#playerStandings table').forEach(table => {
+        const tbody = table.tBodies[0];
+        const rows = Array.from(tbody.rows);
+    
+        const data = rows.map(r => ({
+          name: r.cells[1].textContent.trim() || 'N/A',
+          group: r.cells[2].textContent.trim(),
+          points: parseInt(r.cells[3].textContent)
+        }));
+    
+        data.sort((a, b) => b.points - a.points);
+    
+        tbody.innerHTML = '';
+    
+        data.forEach((p, idx) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${idx + 1}</td>
+            <td>${p.name}</td>
+            <td>${p.group}</td>
+            <td>${p.points}</td>
+          `;
+          if (idx === 0) tr.style.backgroundColor = '#ffd700';
+          else if (idx === 1) tr.style.backgroundColor = '#c0c0c0';
+          else if (idx === 2) tr.style.backgroundColor = '#cd7f32';
+    
+          tbody.appendChild(tr);
+        });
+      });
+    }
+    
+    window.onload = () => {
+      sortStandings();
+      sortPlayerTables();
+    };
+
 
     const today = new Date();
     const todayStr = today.toISOString().split('T')[0]; // YYYY-MM-DD
@@ -192,79 +263,13 @@
       todaySchedule.innerHTML = '<li>No games today.</li>';
     }
 
-    function sortStandings() {
-      document.querySelectorAll('#standings table').forEach(table => {
-        const rows = Array.from(table.tBodies[0].rows);
-        const data = rows.map(r => ({
-          team: r.cells[1].textContent,
-          wins: parseInt(r.cells[2].textContent),
-          losses: parseInt(r.cells[3].textContent),
-          left: parseInt(r.cells[4].textContent)
-        }));
-    
-        // Sort descending by wins
-        data.sort((a,b) => b.wins - a.wins);
-    
-        table.tBodies[0].innerHTML = '';
-        data.forEach((team, idx) => {
-          table.tBodies[0].innerHTML += `
-            <tr class="rank-${idx+1}">
-              <td>${idx + 1}</td>
-              <td>${team.team}</td>
-              <td>${team.wins}</td>
-              <td>${team.losses}</td>
-              <td>${team.left}</td>
-            </tr>`;
-        });
-    
-        // Highlight top 3
-        table.querySelectorAll('tr').forEach((tr, i) => {
-          tr.style.backgroundColor = i === 0 ? '#ffd700' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : '';
-        });
-      });
-    }
-    
-    function sortPlayerTables() {
-      document.querySelectorAll('#playerStandings table').forEach(table => {
-        const rows = Array.from(table.tBodies[0].rows);
-        const data = rows.map(r => ({
-          name: r.cells[1].textContent.trim() || 'N/A',
-          group: r.cells[2].textContent.trim(),
-          points: parseInt(r.cells[3].textContent)
-        }));
-    
-        // Sort descending by points
-        data.sort((a,b) => b.points - a.points);
-    
-        table.tBodies[0].innerHTML = '';
-        data.forEach((p, idx) => {
-          table.tBodies[0].innerHTML += `
-            <tr class="rank-${idx+1}">
-              <td>${idx + 1}</td>
-              <td>${p.name}</td>
-              <td>${p.group}</td>
-              <td>${p.points}</td>
-            </tr>`;
-        });
-    
-        // Highlight top 3
-        table.querySelectorAll('tr').forEach((tr, i) => {
-          tr.style.backgroundColor = i === 0 ? '#ffd700' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : '';
-        });
-      });
-    }
-    
-    window.onload = () => {
-      sortStandings();
-      sortPlayerTables();
-    };
 
-    
     
   </script>
 
 </body>
 </html>
+
 
 
 
