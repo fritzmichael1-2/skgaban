@@ -111,14 +111,14 @@ tbody tr:nth-child(even) {
 @media (max-width: 768px) {
   .page-header {
     flex-direction: column;
+    padding: 10px;
+  }
+  .page-header .header-title {
     text-align: center;
-  }
-  .page-header h1 {
     font-size: 1.4rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
   }
-  .page-header img {
+  .page-header .logo {
     max-height: 50px;
   }
 
@@ -126,4 +126,5 @@ tbody tr:nth-child(even) {
     width: 100%;
   }
 }
+
 
