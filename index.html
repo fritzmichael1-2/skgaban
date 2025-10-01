@@ -86,38 +86,45 @@
   </section>
 
   <section id="schedule" class="content-section">
-    <h2>Upcoming Games</h2>
+  <h2>Upcoming Games</h2>
 
-    <div class="day-schedule">
-      <h3>Friday, October 3, 2025</h3>
-      <ul class="schedule-list">
-        <li><span class="time">5:00 PM</span><span class="dash">–</span><span class="game bracket-b">GRM vs MS PANAY</span></li>
-        <li><span class="time">6:00 PM</span><span class="dash">–</span><span class="game bracket-a">MGW Ballers vs Gallo Water</span></li>
-      </ul>
-    </div>
+  <div id="gameToday" class="day-schedule">
+    <h3>Today's Games</h3>
+    <ul id="todaySchedule" class="schedule-list">
+      <!-- Today's games will be inserted here automatically -->
+    </ul>
+  </div>
 
-    <div class="day-schedule">
-      <h3>Saturday, October 4, 2025</h3>
-      <ul class="schedule-list">
-        <li><span class="time">1:00 PM</span><span class="dash">–</span><span class="game inter-team">Bantayan 2 vs Pabalahas</span></li>
-        <li><span class="time">2:00 PM</span><span class="dash">–</span><span class="game bracket-a">MGW Ballers vs JDA</span></li>
-        <li><span class="time">3:00 PM</span><span class="dash">–</span><span class="game inter-team">GRPDKT vs STR</span></li>
-        <li><span class="time">4:00 PM</span><span class="dash">–</span><span class="game bracket-b">KCRS vs MOL’s Pheno</span></li>
-      </ul>
-    </div>
+  <div class="day-schedule">
+    <h3>Friday, October 3, 2025</h3>
+    <ul class="schedule-list">
+      <li><span class="time">5:00 PM</span><span class="dash">–</span><span class="game bracket-b">GRM vs MS PANAY</span></li>
+      <li><span class="time">6:00 PM</span><span class="dash">–</span><span class="game bracket-a">MGW Ballers vs Gallo Water</span></li>
+    </ul>
+  </div>
 
-    <div class="day-schedule">
-      <h3>Sunday, October 5, 2025</h3>
-      <ul class="schedule-list">
-        <li><span class="time">1:00 PM</span><span class="dash">–</span><span class="game bracket-b">KCRS vs MS PANAY</span></li>
-        <li><span class="time">2:00 PM</span><span class="dash">–</span><span class="game bracket-a">BYPB vs Gallo Water</span></li>
-        <li><span class="time">3:00 PM</span><span class="dash">–</span><span class="game bracket-b">GRM vs MOL’s Pheno</span></li>
-        <li><span class="time">4:00 PM</span><span class="dash">–</span><span class="game inter-team">Galea vs Pabalahas</span></li>
-      </ul>
-    </div>
+  <div class="day-schedule">
+    <h3>Saturday, October 4, 2025</h3>
+    <ul class="schedule-list">
+      <li><span class="time">1:00 PM</span><span class="dash">–</span><span class="game inter-team">Bantayan 2 vs Pabalahas</span></li>
+      <li><span class="time">2:00 PM</span><span class="dash">–</span><span class="game bracket-a">MGW Ballers vs JDA</span></li>
+      <li><span class="time">3:00 PM</span><span class="dash">–</span><span class="game inter-team">GRPDKT vs STR</span></li>
+      <li><span class="time">4:00 PM</span><span class="dash">–</span><span class="game bracket-b">KCRS vs MOL’s Pheno</span></li>
+    </ul>
+  </div>
 
-    <p id="noScheduleMsg" class="no-schedule">There is no schedule.</p>
-  </section>
+  <div class="day-schedule">
+    <h3>Sunday, October 5, 2025</h3>
+    <ul class="schedule-list">
+      <li><span class="time">1:00 PM</span><span class="dash">–</span><span class="game bracket-b">KCRS vs MS PANAY</span></li>
+      <li><span class="time">2:00 PM</span><span class="dash">–</span><span class="game bracket-a">BYPB vs Gallo Water</span></li>
+      <li><span class="time">3:00 PM</span><span class="dash">–</span><span class="game bracket-b">GRM vs MOL’s Pheno</span></li>
+      <li><span class="time">4:00 PM</span><span class="dash">–</span><span class="game inter-team">Galea vs Pabalahas</span></li>
+    </ul>
+  </div>
+
+  <p id="noScheduleMsg" class="no-schedule">There is no schedule.</p>
+</section>
 
 
 
@@ -167,6 +174,23 @@
 
 
   <script>
+
+    const today = new Date();
+    const todayStr = today.toISOString().split('T')[0]; // YYYY-MM-DD
+    const todaySchedule = document.getElementById('todaySchedule');
+  
+    const todaysGames = games.filter(game => game.date === todayStr);
+  
+    if (todaysGames.length > 0) {
+      todaysGames.forEach(game => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="time">${game.time}</span><span class="dash">–</span><span class="game ${game.type}">${game.match}</span>`;
+        todaySchedule.appendChild(li);
+      });
+      document.getElementById('noScheduleMsg').style.display = 'none';
+    } else {
+      todaySchedule.innerHTML = '<li>No games today.</li>';
+    }
     function showSection(sectionId, btn) {
       document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('hidden'));
       document.getElementById(sectionId).classList.remove('hidden');
@@ -228,6 +252,7 @@
 
 </body>
 </html>
+
 
 
 
