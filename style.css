@@ -8,7 +8,7 @@ body {
 
 .page-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
   padding: 15px 20px;
   background: #0A1D37;
@@ -16,7 +16,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  flex-wrap: wrap;
+  flex-wrap: wrap; 
 }
 
 .page-header h1 {
@@ -121,7 +121,9 @@ tbody tr:nth-child(even) {
   .page-header img {
     max-height: 50px;
   }
+
   .nav-btn {
     width: 100%;
   }
 }
+
