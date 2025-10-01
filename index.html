@@ -3,22 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SKGBL 2025 Team Standings</title>
+  <title>SKGBL 2025</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <header class="page-header">
+
+  <header class="page-header">
     <img src="Logo1.png" alt="Logo 1">
     <h1>SKGBL 2025 Team Standings</h1>
     <img src="Logo2.png" alt="Logo 2">
   </header>
-  </header>
 
-  <section>
+
+  <nav class="top-nav">
+    <button class="nav-btn active" onclick="showSection('standings', this)">Team Standings</button>
+    <button class="nav-btn" onclick="showSection('schedule', this)">Game Schedule</button>
+  </nav>
+
+
+  <section id="standings" class="content-section">
     <h2>Bracket A</h2>
-    <table id="bracketA">
+    <table>
       <thead>
         <tr>
           <th>Rank</th>
@@ -35,11 +40,9 @@
         <tr><td></td><td>GALLO WATER</td><td>3</td><td>0</td><td>3</td></tr>
       </tbody>
     </table>
-  </section>
 
-  <section>
     <h2>Bracket B</h2>
-    <table id="bracketB">
+    <table>
       <thead>
         <tr>
           <th>Rank</th>
@@ -56,11 +59,9 @@
         <tr><td></td><td>GRM</td><td>2</td><td>0</td><td>4</td></tr>
       </tbody>
     </table>
-  </section>
 
-  <section>
     <h2>Team Category</h2>
-    <table id="teamCategory">
+    <table>
       <thead>
         <tr>
           <th>Rank</th>
@@ -81,35 +82,47 @@
     </table>
   </section>
 
+  <section id="schedule" class="content-section hidden">
+    <h2>Upcoming Games</h2>
+    <ul class="schedule-list">
+      
+    </ul>
+  </section>
+
   <script>
-    function sortTableByWins(tableId) {
-      const table = document.getElementById(tableId);
-      const rows = Array.from(table.tBodies[0].rows);
-      const data = rows.map(row => ({
-        team: row.cells[1].textContent,
-        wins: parseInt(row.cells[2].textContent) || 0,
-        losses: parseInt(row.cells[3].textContent) || 0,
-        gamesLeft: parseInt(row.cells[4].textContent) || 0
-      }));
-      data.sort((a,b) => b.wins - a.wins);
-      table.tBodies[0].innerHTML = '';
-      data.forEach((team, idx) => {
-        table.tBodies[0].innerHTML += `
+    function showSection(sectionId, btn) {
+      document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    // Auto-sort standings by wins on load
+    function sortStandings() {
+      document.querySelectorAll('#standings table').forEach(table => {
+        const rows = Array.from(table.tBodies[0].rows);
+        const data = rows.map(r => ({
+          team: r.cells[1].textContent,
+          wins: parseInt(r.cells[2].textContent),
+          losses: parseInt(r.cells[3].textContent),
+          left: parseInt(r.cells[4].textContent)
+        }));
+        data.sort((a,b) => b.wins - a.wins);
+        table.tBodies[0].innerHTML = '';
+        data.forEach((team, idx) => {
+          table.tBodies[0].innerHTML += `
           <tr>
-            <td>${idx + 1}</td>
+            <td>${idx+1}</td>
             <td>${team.team}</td>
             <td>${team.wins}</td>
             <td>${team.losses}</td>
-            <td>${team.gamesLeft}</td>
+            <td>${team.left}</td>
           </tr>`;
+        });
       });
     }
-    window.onload = () => {
-      sortTableByWins('bracketA');
-      sortTableByWins('bracketB');
-      sortTableByWins('teamCategory');
-    };
+    window.onload = sortStandings;
   </script>
+
 </body>
 </html>
-
