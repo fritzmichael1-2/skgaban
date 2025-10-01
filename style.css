@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0A1D37, #004C99);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background: #3e8ede;
   color: #ffffff;
   text-align: center;
 }
@@ -143,3 +143,4 @@ th {
     min-width: 350px;
   }
 }
+
