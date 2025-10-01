@@ -23,6 +23,7 @@
   </nav>
 
 
+
   <section id="standings" class="content-section">
     <h2>Bracket A</h2>
     <table>
@@ -84,50 +85,78 @@
     </table>
   </section>
 
-  <section id="schedule" class="content-section hidden">
-  <h2>Upcoming Games</h2>
-  <ul class="schedule-list" id="scheduleList">
-    
-  </ul>
-  <p id="noScheduleMsg" class="no-schedule">There is no schedule.</p>
-</section>
+  <section id="schedule" class="content-section">
+    <h2>Upcoming Games</h2>
+
+    <div class="day-schedule">
+      <h3>Friday, October 3, 2025</h3>
+      <ul class="schedule-list">
+        <li><span class="time">5:00 PM</span><span class="dash">–</span><span class="game bracket-b">GRM vs MS PANAY</span></li>
+        <li><span class="time">6:00 PM</span><span class="dash">–</span><span class="game bracket-a">MGW Ballers vs Gallo Water</span></li>
+      </ul>
+    </div>
+
+    <div class="day-schedule">
+      <h3>Saturday, October 4, 2025</h3>
+      <ul class="schedule-list">
+        <li><span class="time">1:00 PM</span><span class="dash">–</span><span class="game inter-team">Bantayan 2 vs Pabalahas</span></li>
+        <li><span class="time">2:00 PM</span><span class="dash">–</span><span class="game bracket-a">MGW Ballers vs JDA</span></li>
+        <li><span class="time">3:00 PM</span><span class="dash">–</span><span class="game inter-team">GRPDKT vs STR</span></li>
+        <li><span class="time">4:00 PM</span><span class="dash">–</span><span class="game bracket-b">KCRS vs MOL’s Pheno</span></li>
+      </ul>
+    </div>
+
+    <div class="day-schedule">
+      <h3>Sunday, October 5, 2025</h3>
+      <ul class="schedule-list">
+        <li><span class="time">1:00 PM</span><span class="dash">–</span><span class="game bracket-b">KCRS vs MS PANAY</span></li>
+        <li><span class="time">2:00 PM</span><span class="dash">–</span><span class="game bracket-a">BYPB vs Gallo Water</span></li>
+        <li><span class="time">3:00 PM</span><span class="dash">–</span><span class="game bracket-b">GRM vs MOL’s Pheno</span></li>
+        <li><span class="time">4:00 PM</span><span class="dash">–</span><span class="game inter-team">Galea vs Pabalahas</span></li>
+      </ul>
+    </div>
+
+    <p id="noScheduleMsg" class="no-schedule">There is no schedule.</p>
+  </section>
 
 
-<section id="playerStandings" class="content-section hidden">
-  <h2>Inter-Agency Player Standings</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Player</th>
-        <th>Team</th>
-        <th>Points</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td></td><td> </td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td></tr>
-    </tbody>
-  </table>
 
-  <h2>Inter-Team Player Standings</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Player</th>
-        <th>Team</th>
-        <th>Points</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td></tr>
-    </tbody>
-  </table>
-</section>
+
+  <section id="playerStandings" class="content-section">
+    <h2>Inter-Agency Player Standings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Team</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td> </td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <h2>Inter-Team Player Standings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Team</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </section>
 
 
   <script>
@@ -183,6 +212,7 @@
         });
       });
     }
+
     window.onload = () => {
       sortStandings();
       sortPlayerTables();
