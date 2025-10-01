@@ -8,22 +8,27 @@ body {
 
 .page-header {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background: #1a4dab;
-  padding: 15px;
+  padding: 15px 30px;
   gap: 15px;
+  flex-wrap: nowrap;
 }
+
 .page-header img {
-  max-height: 70px;
+  height: 70px;
   width: auto;
 }
+
 .page-header h1 {
   color: #fff;
   font-size: 1.8rem;
   margin: 0;
+  text-align: center;
+  flex-grow: 1;
 }
+
 
 .top-nav {
   display: flex;
@@ -159,3 +164,4 @@ th {
     font-size: 12px;
   }
 }
+
