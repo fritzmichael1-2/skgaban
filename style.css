@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   background: linear-gradient(135deg, #0A1D37, #004C99);
   color: #ffffff;
   text-align: center;
@@ -31,6 +31,7 @@ body {
 .page-header img {
   max-height: 70px;
   width: auto;
+  position: sticky;
 }
 
 .top-nav {
@@ -126,5 +127,6 @@ tbody tr:nth-child(even) {
     width: 100%;
   }
 }
+
 
 
