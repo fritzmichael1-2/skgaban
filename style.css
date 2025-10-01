@@ -14,7 +14,10 @@ header {
   align-items: center;
   padding: 15px 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-  flex-wrap: wrap; /* makes header elements wrap on small screens */
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 header img {
@@ -27,7 +30,11 @@ header h1 {
   font-size: 1.8rem;
   margin: 10px 0;
   letter-spacing: 1px;
-  flex: 1 1 100%; /* headline spans full width on small screens */
+  flex: 1 1 100%;
+}
+
+main {
+  padding-top: 110px;
 }
 
 section {
@@ -38,7 +45,7 @@ section {
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  overflow-x: auto; /* enable horizontal scroll on small devices */
+  overflow-x: auto;
 }
 
 h2 {
@@ -48,67 +55,14 @@ h2 {
   margin-bottom: 15px;
 }
 
-/* Tables responsive */
 table {
   width: 100%;
   border-collapse: collapse;
   background: rgba(255,255,255,0.1);
   border-radius: 10px;
   overflow: hidden;
-  min-width: 500px; /* keeps structure readable */
+  min-width: 500px;
 }
 
 th, td {
-  padding: 12px;
-  text-align: center;
-  font-size: 0.95rem;
-}
-
-th {
-  background-color: #004C99;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-tr:nth-child(even) {
-  background-color: rgba(255,255,255,0.07);
-}
-
-tr:hover {
-  background-color: rgba(255,255,255,0.2);
-  transition: background-color 0.3s ease;
-}
-
-td {
-  color: #ffffff;
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
-  header h1 {
-    font-size: 1.4rem;
-  }
-  section {
-    padding: 15px;
-  }
-  th, td {
-    padding: 8px;
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  header img {
-    max-height: 50px;
-  }
-  header h1 {
-    font-size: 1.2rem;
-  }
-  h2 {
-    font-size: 1.2rem;
-  }
-}
+  padding: 12p
