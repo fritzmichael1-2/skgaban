@@ -191,13 +191,6 @@
     } else {
       todaySchedule.innerHTML = '<li>No games today.</li>';
     }
-    
-    function showSection(sectionId, btn) {
-      document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('hidden'));
-      document.getElementById(sectionId).classList.remove('hidden');
-      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    }
 
     function sortStandings() {
       document.querySelectorAll('#standings table').forEach(table => {
@@ -208,17 +201,25 @@
           losses: parseInt(r.cells[3].textContent),
           left: parseInt(r.cells[4].textContent)
         }));
+    
+        // Sort descending by wins
         data.sort((a,b) => b.wins - a.wins);
+    
         table.tBodies[0].innerHTML = '';
         data.forEach((team, idx) => {
           table.tBodies[0].innerHTML += `
-            <tr>
+            <tr class="rank-${idx+1}">
               <td>${idx + 1}</td>
               <td>${team.team}</td>
               <td>${team.wins}</td>
               <td>${team.losses}</td>
               <td>${team.left}</td>
             </tr>`;
+        });
+    
+        // Highlight top 3
+        table.querySelectorAll('tr').forEach((tr, i) => {
+          tr.style.backgroundColor = i === 0 ? '#ffd700' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : '';
         });
       });
     }
@@ -231,28 +232,40 @@
           group: r.cells[2].textContent.trim(),
           points: parseInt(r.cells[3].textContent)
         }));
+    
+        // Sort descending by points
         data.sort((a,b) => b.points - a.points);
+    
         table.tBodies[0].innerHTML = '';
         data.forEach((p, idx) => {
           table.tBodies[0].innerHTML += `
-            <tr>
+            <tr class="rank-${idx+1}">
               <td>${idx + 1}</td>
               <td>${p.name}</td>
               <td>${p.group}</td>
               <td>${p.points}</td>
             </tr>`;
         });
+    
+        // Highlight top 3
+        table.querySelectorAll('tr').forEach((tr, i) => {
+          tr.style.backgroundColor = i === 0 ? '#ffd700' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : '';
+        });
       });
     }
-
+    
     window.onload = () => {
       sortStandings();
       sortPlayerTables();
     };
+
+    
+    
   </script>
 
 </body>
 </html>
+
 
 
 
