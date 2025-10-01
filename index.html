@@ -191,6 +191,7 @@
     } else {
       todaySchedule.innerHTML = '<li>No games today.</li>';
     }
+    
     function showSection(sectionId, btn) {
       document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('hidden'));
       document.getElementById(sectionId).classList.remove('hidden');
@@ -211,26 +212,26 @@
         table.tBodies[0].innerHTML = '';
         data.forEach((team, idx) => {
           table.tBodies[0].innerHTML += `
-          <tr>
-            <td>${idx+1}</td>
-            <td>${team.team}</td>
-            <td>${team.wins}</td>
-            <td>${team.losses}</td>
-            <td>${team.left}</td>
-          </tr>`;
+            <tr>
+              <td>${idx + 1}</td>
+              <td>${team.team}</td>
+              <td>${team.wins}</td>
+              <td>${team.losses}</td>
+              <td>${team.left}</td>
+            </tr>`;
         });
       });
     }
-
+    
     function sortPlayerTables() {
       document.querySelectorAll('#playerStandings table').forEach(table => {
         const rows = Array.from(table.tBodies[0].rows);
         const data = rows.map(r => ({
-          name: r.cells[1].textContent,
-          group: r.cells[2].textContent,
+          name: r.cells[1].textContent.trim() || 'N/A',
+          group: r.cells[2].textContent.trim(),
           points: parseInt(r.cells[3].textContent)
         }));
-        data.sort((a,b) => b.points - a.points); // Sort descending
+        data.sort((a,b) => b.points - a.points);
         table.tBodies[0].innerHTML = '';
         data.forEach((p, idx) => {
           table.tBodies[0].innerHTML += `
@@ -252,6 +253,7 @@
 
 </body>
 </html>
+
 
 
 
