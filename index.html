@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKGBL 2025 Team Standings</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f9fb;
+      margin: 0;
+    }
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #004aad;
+      padding: 15px;
+    }
+    header img {
+      height: 60px;
+      margin: 0 15px;
+    }
+    header h1 {
+      color: #fff;
+      font-size: 2rem;
+      text-align: center;
+    }
+    section {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 0;
+      color: #004aad;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background: #f0f4f9;
+      color: #004aad;
+      font-weight: 600;
+    }
+    tr:nth-child(even) td {
+      background: #fafbfd;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="Logo1.png" alt="Logo 1" style="width: 75px; height: 75px;">
+    <h1>SKGBL 2025 Team Standings</h1>
+    <img src="Logo2.png" alt="Logo 2" style="width: 110px; height: 110px;">
+  </header>
+
+  <!-- Bracket A -->
+  <section>
+    <h2>Bracket A</h2>
+    <table id="bracketA">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Team</th>
+          <th>Wins</th>
+          <th>Losses</th>
+          <th>Games Left</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td>JDA</td><td>0</td><td>3</td><td>3</td></tr>
+        <tr><td></td><td>MGW BALLERS</td><td>1</td><td>2</td><td>3</td></tr>
+        <tr><td></td><td>BYPB</td><td>2</td><td>1</td><td>3</td></tr>
+        <tr><td></td><td>GALLO WATER</td><td>3</td><td>0</td><td>3</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Bracket B -->
+  <section>
+    <h2>Bracket B</h2>
+    <table id="bracketB">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Team</th>
+          <th>Wins</th>
+          <th>Losses</th>
+          <th>Games Left</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td>KCRS</td><td>1</td><td>1</td><td>4</td></tr>
+        <tr><td></td><td>MOL'S PHENO</td><td>1</td><td>1</td><td>4</td></tr>
+        <tr><td></td><td>MS PANAY</td><td>0</td><td>1</td><td>4</td></tr>
+        <tr><td></td><td>GRM</td><td>2</td><td>0</td><td>4</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Team Category -->
+  <section>
+    <h2>Team Category</h2>
+    <table id="teamCategory">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Team</th>
+          <th>Wins</th>
+          <th>Losses</th>
+          <th>Games Left</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td>GRPDKT</td><td>2</td><td>1</td><td>7</td></tr>
+        <tr><td></td><td>PABALHAS</td><td>0</td><td>2</td><td>8</td></tr>
+        <tr><td></td><td>STR</td><td>3</td><td>0</td><td>7</td></tr>
+        <tr><td></td><td>GALEA</td><td>1</td><td>2</td><td>7</td></tr>
+        <tr><td></td><td>NATAGNAN</td><td>2</td><td>1</td><td>7</td></tr>
+        <tr><td></td><td>BANTAYAN 2</td><td>0</td><td>2</td><td>8</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <script>
+    function sortTableByWins(tableId) {
+      const table = document.getElementById(tableId);
+      const rows = Array.from(table.tBodies[0].rows);
+      const data = rows.map(row => ({
+        team: row.cells[1].textContent,
+        wins: parseInt(row.cells[2].textContent) || 0,
+        losses: parseInt(row.cells[3].textContent) || 0,
+        gamesLeft: parseInt(row.cells[4].textContent) || 0
+      }));
+      data.sort((a,b) => b.wins - a.wins);
+      table.tBodies[0].innerHTML = '';
+      data.forEach((team, idx) => {
+        table.tBodies[0].innerHTML += `
+          <tr>
+            <td>${idx + 1}</td>
+            <td>${team.team}</td>
+            <td>${team.wins}</td>
+            <td>${team.losses}</td>
+            <td>${team.gamesLeft}</td>
+          </tr>`;
+      });
+    }
+    window.onload = () => {
+      sortTableByWins('bracketA');
+      sortTableByWins('bracketB');
+      sortTableByWins('teamCategory');
+    };
+  </script>
+
+</body>
+</html>
