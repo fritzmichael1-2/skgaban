@@ -130,17 +130,14 @@ th {
   body {
     font-size: 14px;
   }
-
   .nav-btn {
     flex: 1 1 100px;
     font-size: 0.9rem;
     padding: 8px 12px;
   }
-
   table {
     font-size: 13px;
   }
-
   th, td {
     padding: 6px 4px;
   }
@@ -150,17 +147,14 @@ th {
   body {
     font-size: 13px;
   }
-
   .page-header h1 {
     font-size: 1.4rem;
   }
-
   .nav-btn {
     flex: 1 1 90px;
     font-size: 0.8rem;
     padding: 6px 10px;
   }
-
   table {
     font-size: 12px;
   }
