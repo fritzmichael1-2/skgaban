@@ -19,6 +19,7 @@
   <nav class="top-nav">
     <button class="nav-btn active" onclick="showSection('standings', this)">Team Standings</button>
     <button class="nav-btn" onclick="showSection('schedule', this)">Game Schedule</button>
+    <button class="nav-btn" onclick="showSection('playerStandings', this)">Player Standings</button>
   </nav>
 
 
@@ -91,6 +92,44 @@
   <p id="noScheduleMsg" class="no-schedule">There is no schedule.</p>
 </section>
 
+
+<section id="playerStandings" class="content-section hidden">
+  <h2>Inter-Agency Player Standings</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Player</th>
+        <th>Team</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td> </td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Inter-Team Player Standings</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Player</th>
+        <th>Team</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</section>
+
+
   <script>
     function showSection(sectionId, btn) {
       document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('hidden'));
@@ -122,12 +161,36 @@
         });
       });
     }
-    window.onload = sortStandings;
+
+    function sortPlayerTables() {
+      document.querySelectorAll('#playerStandings table').forEach(table => {
+        const rows = Array.from(table.tBodies[0].rows);
+        const data = rows.map(r => ({
+          name: r.cells[1].textContent,
+          group: r.cells[2].textContent,
+          points: parseInt(r.cells[3].textContent)
+        }));
+        data.sort((a,b) => b.points - a.points); // Sort descending
+        table.tBodies[0].innerHTML = '';
+        data.forEach((p, idx) => {
+          table.tBodies[0].innerHTML += `
+            <tr>
+              <td>${idx + 1}</td>
+              <td>${p.name}</td>
+              <td>${p.group}</td>
+              <td>${p.points}</td>
+            </tr>`;
+        });
+      });
+    }
+    window.onload = () => {
+      sortStandings();
+      sortPlayerTables();
+    };
   </script>
 
 </body>
 </html>
-
 
 
 
