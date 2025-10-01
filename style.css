@@ -20,11 +20,6 @@ header {
   z-index: 1000;
 }
 
-header img {
-  max-height: 70px;
-  width: auto;
-}
-
 header h1 {
   font-weight: 600;
   font-size: 1.8rem;
@@ -66,3 +61,4 @@ table {
 
 th, td {
   padding: 12p
+
