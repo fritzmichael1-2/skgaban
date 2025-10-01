@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  background: #3e8ede;
+  background: linear-gradient(135deg, #0b428f, #004C99);
   color: #ffffff;
   text-align: center;
 }
@@ -143,4 +143,5 @@ th {
     min-width: 350px;
   }
 }
+
 
