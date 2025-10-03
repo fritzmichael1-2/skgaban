@@ -229,6 +229,15 @@ th {
   background-color: #e8f0fe;
 }
 
+.schedule-separator {
+  border: none;
+  height: 2px;
+  background: #ccc;   
+  margin: 20px 0;     
+  width: 80%;        
+}
+
+
 @media (max-width: 768px) {
   body {
     font-size: 14px;
@@ -262,3 +271,4 @@ th {
     font-size: 12px;
   }
 }
+
