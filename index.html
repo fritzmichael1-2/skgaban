@@ -89,11 +89,12 @@
   <h2>Upcoming Games</h2>
 
   <div id="gameToday" class="day-schedule">
-    <h3>Today's Games</h3>
+    <h3 id="todayHeading">Today's Games</h3>
     <ul id="todaySchedule" class="schedule-list">
-      <!-- Today's games will be inserted here automatically -->
+      
     </ul>
   </div>
+
 
   <div class="day-schedule">
     <h3>Friday, October 3, 2025</h3>
@@ -258,29 +259,52 @@
 
 
     const games = [
- 
       { date: '2025-10-03', time: '5:00 PM', match: 'GRM vs MS PANAY', type: 'bracket-b' },
       { date: '2025-10-03', time: '6:00 PM', match: 'MGW Ballers vs Gallo Water', type: 'bracket-a' },
     
-      
       { date: '2025-10-04', time: '1:00 PM', match: 'Bantayan 2 vs Pabalahas', type: 'inter-team' },
       { date: '2025-10-04', time: '2:00 PM', match: 'MGW Ballers vs JDA', type: 'bracket-a' },
       { date: '2025-10-04', time: '3:00 PM', match: 'GRPDKT vs STR', type: 'inter-team' },
       { date: '2025-10-04', time: '4:00 PM', match: 'KCRS vs MOL’s Pheno', type: 'bracket-b' },
     
- 
       { date: '2025-10-05', time: '1:00 PM', match: 'KCRS vs MS PANAY', type: 'bracket-b' },
       { date: '2025-10-05', time: '2:00 PM', match: 'BYPB vs Gallo Water', type: 'bracket-a' },
       { date: '2025-10-05', time: '3:00 PM', match: 'GRM vs MOL’s Pheno', type: 'bracket-b' },
       { date: '2025-10-05', time: '4:00 PM', match: 'Galea vs Pabalahas', type: 'inter-team' }
     ];
-
+    
+    const today = new Date();
+    const todayStr = today.toISOString().split('T')[0]; // YYYY-MM-DD
+    const todaySchedule = document.getElementById('todaySchedule');
+    const todayHeading = document.getElementById('todayHeading');
+    
+    // Filter games for today
+    const todaysGames = games.filter(game => game.date === todayStr);
+    
+    // format date for heading
+    const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+    todayHeading.textContent = `Games for ${today.toLocaleDateString('en-US', options)}`;
+    
+    if (todaysGames.length > 0) {
+      todaySchedule.innerHTML = '';
+      todaysGames.forEach(game => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span class="time">${game.time}</span>
+          <span class="dash">–</span>
+          <span class="game ${game.type}">${game.match}</span>`;
+        todaySchedule.appendChild(li);
+      });
+    } else {
+      todaySchedule.innerHTML = '<li>Wait for the next schedule.</li>';
+    }
 
     
   </script>
 
 </body>
 </html>
+
 
 
 
