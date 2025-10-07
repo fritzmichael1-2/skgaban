@@ -101,25 +101,35 @@
   
   <h2>Upcoming Games</h2>
 
-  <div class="day-schedule">
-    <h3>Saturday, October 4, 2025</h3>
-    <ul class="schedule-list">
-      <li><span class="time">1:00 PM</span><span class="dash">–</span><span class="game inter-team">Bantayan 2 vs Pabalahas</span></li>
-      <li><span class="time">2:00 PM</span><span class="dash">–</span><span class="game bracket-a">MGW Ballers vs JDA</span></li>
-      <li><span class="time">3:00 PM</span><span class="dash">–</span><span class="game inter-team">GRPDKT vs STR</span></li>
-      <li><span class="time">4:00 PM</span><span class="dash">–</span><span class="game bracket-b">KCRS vs MOL’s Pheno</span></li>
-    </ul>
-  </div>
+    <div class="day-schedule">
+      <h3>Friday, October 10, 2025</h3>
+      <ul class="schedule-list">
+        <li><span class="time">5:00 PM</span><span class="dash">–</span><span class="game inter-team">Natagnan vs Bantayan 2</span></li>
+        <li><span class="time">6:00 PM</span><span class="dash">–</span><span class="game bracket-a">JDA vs BYPB | Bracket A</span></li>
+      </ul>
+    </div>
+    
+    <div class="day-schedule">
+      <h3>Saturday, October 11, 2025</h3>
+      <ul class="schedule-list">
+        <li><span class="time">3:00 PM</span><span class="dash">–</span><span class="game inter-team">GRPDKT vs Pabalhas</span></li>
+        <li><span class="time">4:00 PM</span><span class="dash">–</span><span class="game bracket-b">Mol’s Pheno vs KCRS | Bracket B</span></li>
+        <li><span class="time">5:00 PM</span><span class="dash">–</span><span class="game bracket-b">GRM vs MS Panay | Bracket B</span></li>
+        <li><span class="time">6:00 PM</span><span class="dash">–</span><span class="game inter-team">STR vs Bantayan 2</span></li>
+      </ul>
+    </div>
+    
+    <div class="day-schedule">
+      <h3>Sunday, October 12, 2025</h3>
+      <ul class="schedule-list">
+        <li><span class="time">3:00 PM</span><span class="dash">–</span><span class="game inter-team">Galea’s vs Natagnan</span></li>
+        <li><span class="time">4:00 PM</span><span class="dash">–</span><span class="game bracket-b">Mol’s Pheno vs MS Panay | Bracket B</span></li>
+        <li><span class="time">5:00 PM</span><span class="dash">–</span><span class="game bracket-a">Gallo Water vs JDA | Bracket A</span></li>
+        <li><span class="time">6:00 PM</span><span class="dash">–</span><span class="game bracket-b">KCRS vs GRM | Bracket B</span></li>
+        <li><span class="time">7:00 PM</span><span class="dash">–</span><span class="game bracket-b">MGW Ballers vs BYPB | Bracket B</span></li>
+      </ul>
+    </div>
 
-  <div class="day-schedule">
-    <h3>Sunday, October 5, 2025</h3>
-    <ul class="schedule-list">
-      <li><span class="time">1:00 PM</span><span class="dash">–</span><span class="game bracket-b">KCRS vs MS PANAY</span></li>
-      <li><span class="time">2:00 PM</span><span class="dash">–</span><span class="game bracket-a">BYPB vs Gallo Water</span></li>
-      <li><span class="time">3:00 PM</span><span class="dash">–</span><span class="game bracket-b">GRM vs MOL’s Pheno</span></li>
-      <li><span class="time">4:00 PM</span><span class="dash">–</span><span class="game inter-team">Galea vs Pabalahas</span></li>
-    </ul>
-  </div>
 
 </section>
 
@@ -651,19 +661,21 @@
 
 
     const games = [
-      { date: '2025-10-03', time: '5:00 PM', match: 'GRM vs MS PANAY', type: 'bracket-b' },
-      { date: '2025-10-03', time: '6:00 PM', match: 'MGW Ballers vs Gallo Water', type: 'bracket-a' },
+      { date: '2025-10-10', time: '5:00 PM', match: 'Natagnan vs Bantayan 2', type: 'inter-team' },
+      { date: '2025-10-10', time: '6:00 PM', match: 'JDA vs BYPB', type: 'bracket-a' },
     
-      { date: '2025-10-04', time: '1:00 PM', match: 'Bantayan 2 vs Pabalahas', type: 'inter-team' },
-      { date: '2025-10-04', time: '2:00 PM', match: 'MGW Ballers vs JDA', type: 'bracket-a' },
-      { date: '2025-10-04', time: '3:00 PM', match: 'GRPDKT vs STR', type: 'inter-team' },
-      { date: '2025-10-04', time: '4:00 PM', match: 'KCRS vs MOL’s Pheno', type: 'bracket-b' },
+      { date: '2025-10-11', time: '3:00 PM', match: 'GRPDKT vs Pabalhas', type: 'inter-team' },
+      { date: '2025-10-11', time: '4:00 PM', match: 'Mol’s Pheno vs KCRS', type: 'bracket-b' },
+      { date: '2025-10-11', time: '5:00 PM', match: 'GRM vs MS Panay', type: 'bracket-b' },
+      { date: '2025-10-11', time: '6:00 PM', match: 'STR vs Bantayan 2', type: 'inter-team' },
     
-      { date: '2025-10-05', time: '1:00 PM', match: 'KCRS vs MS PANAY', type: 'bracket-b' },
-      { date: '2025-10-05', time: '2:00 PM', match: 'BYPB vs Gallo Water', type: 'bracket-a' },
-      { date: '2025-10-05', time: '3:00 PM', match: 'GRM vs MOL’s Pheno', type: 'bracket-b' },
-      { date: '2025-10-05', time: '4:00 PM', match: 'Galea vs Pabalahas', type: 'inter-team' }
+      { date: '2025-10-12', time: '3:00 PM', match: 'Galea’s vs Natagnan', type: 'inter-team' },
+      { date: '2025-10-12', time: '4:00 PM', match: 'Mol’s Pheno vs MS Panay', type: 'bracket-b' },
+      { date: '2025-10-12', time: '5:00 PM', match: 'Gallo Water vs JDA', type: 'bracket-a' },
+      { date: '2025-10-12', time: '6:00 PM', match: 'KCRS vs GRM', type: 'bracket-b' },
+      { date: '2025-10-12', time: '7:00 PM', match: 'MGW Ballers vs BYPB', type: 'bracket-b' }
     ];
+
     
     const today = new Date();
     const todayStr = today.toISOString().split('T')[0]; // YYYY-MM-DD
@@ -696,6 +708,7 @@
 
 </body>
 </html>
+
 
 
 
