@@ -20,7 +20,7 @@
     <button class="nav-btn active" onclick="showSection('standings', this)">Team Standings</button>
     <button class="nav-btn" onclick="showSection('schedule', this)">Game Schedule</button>
     <button class="nav-btn" onclick="showSection('playerStandings', this)">Player Standings</button>
-    <button class="nav-btn" onclick="showSection('matchResult', this)">Match Results</button>
+    <button class="nav-btn" onclick="showSection('playerStanding', this)">Player Standing</button>
   </nav>
 
 
@@ -121,7 +121,6 @@
     </ul>
   </div>
 
-  <p id="noScheduleMsg" class="no-schedule">Wait for the next schedule.</p>
 </section>
 
 
@@ -216,7 +215,7 @@
   </section>
 
 
-  <section id="matchResult">
+  <section id="playerStanding" class="content-section" style="display: none;">
     <h2>SEPTEMBER 20, 2025 | SATURDAY</h2>
   
     <div class="match-result">
@@ -567,24 +566,19 @@
   
   </section>
 
-
-
-
-
-
   <script>
 
     function showSection(sectionId, btn) {
-      document.querySelectorAll('.content-section').forEach(sec => {
-        sec.style.display = 'none';
-      });
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.style.display = 'none');
+
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(button => button.classList.remove('active'));
 
       document.getElementById(sectionId).style.display = 'block';
-
-      document.querySelectorAll('.nav-btn').forEach(b => {
-        b.classList.remove('active');
-      });
       btn.classList.add('active');
+
+      localStorage.setItem('activeSection', sectionId);
     }
 
     function sortStandings() {
@@ -648,10 +642,10 @@
       });
     }
     
-    window.onload = () => {
-      sortStandings();
-      sortPlayerTables();
-      showSection('standings', document.querySelector('.nav-btn.active'));
+    window.onload = function() {
+      const savedSection = localStorage.getItem('activeSection') || 'standings';
+      const activeBtn = document.querySelector(`.nav-btn[onclick*="${savedSection}"]`);
+      showSection(savedSection, activeBtn);
     };
 
 
@@ -702,6 +696,7 @@
 
 </body>
 </html>
+
 
 
 
