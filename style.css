@@ -237,70 +237,93 @@ th {
   width: 80%;        
 }
 
-
+/* Match Result Section */
 #matchResult {
   padding: 40px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f6f9;
+  background: #f4f6f9;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
 #matchResult h2 {
-  font-size: 22px;
-  color: #222;
-  margin: 50px 0 20px;
+  font-size: 20px;
+  color: #2c3e50;
   text-transform: uppercase;
-  border-left: 6px solid #007bff;
-  padding-left: 12px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-left: 5px solid #007bff;
+  padding-left: 15px;
 }
 
 .match-result {
-  background: linear-gradient(to right, #ffffff, #f9f9f9);
-  border: 1px solid #e0e0e0;
+  background: white;
   border-radius: 10px;
   padding: 20px 25px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
   transition: transform 0.2s ease;
+  border-left: 6px solid #007bff;
 }
 
 .match-result:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
-.match-result p {
-  margin: 6px 0;
-  font-size: 16px;
-  color: #333;
-  line-height: 1.4;
-}
-
-.match-result .game-title {
+.game-title {
   font-size: 14px;
-  color: #007bff;
   font-weight: bold;
-  margin-bottom: 10px;
+  color: #007bff;
   text-transform: uppercase;
+  margin-bottom: 10px;
   letter-spacing: 0.5px;
 }
 
-.match-result .teams {
+.teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 18px;
   font-weight: 600;
-  color: #222;
+  color: #2c3e50;
+  background: #f1f1f1;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
-.match-result .winner {
-  font-size: 15px;
+.team-name {
+  flex: 1;
+  text-align: center;
+}
+
+.score {
+  width: 50px;
+  text-align: center;
+  font-size: 20px;
   font-weight: bold;
-  color: #27ae60;
-  margin-top: 5px;
+  color: #000;
 }
 
-.match-result .default {
+.vs {
+  width: 40px;
+  text-align: center;
+  color: #888;
+}
+
+.winner {
+  font-size: 15px;
+  color: #27ae60;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.default {
   color: #d35400;
   font-style: italic;
 }
+
+
+
 
 
 @media (max-width: 768px) {
@@ -336,6 +359,7 @@ th {
     font-size: 12px;
   }
 }
+
 
 
 
