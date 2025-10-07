@@ -20,6 +20,7 @@
     <button class="nav-btn active" onclick="showSection('standings', this)">Team Standings</button>
     <button class="nav-btn" onclick="showSection('schedule', this)">Game Schedule</button>
     <button class="nav-btn" onclick="showSection('playerStandings', this)">Player Standings</button>
+    <button class="nav-btn" onclick="showSection('matchResult', this)">Match Results</button>
   </nav>
 
 
@@ -215,6 +216,24 @@
   </section>
 
 
+  <section id="matchResult" style="display: none;">
+    <h2>Match Results</h2>
+  
+    <div class="match-result">
+      <p><strong>Date:</strong> September 20, 2025 (Saturday)</p>
+      <p><strong>Teams:</strong> GALLO WATER vs BYPB</p>
+      <p class="score"><strong>Score:</strong> GALLO WATER 86 - 83 BYPB</p>
+    </div>
+  
+    <div class="match-result">
+      <p><strong>Date:</strong> September 20, 2025 (Saturday)</p>
+      <p><strong>Teams:</strong> JDA vs MGW BALLERS</p>
+      <p class="score"><strong>Score:</strong> JDA 70 - 77 MGW BALLERS</p>
+    </div>
+  </section>
+
+
+
   <script>
 
     function showSection(sectionId, btn) {
@@ -345,6 +364,7 @@
 
 </body>
 </html>
+
 
 
 
