@@ -577,86 +577,78 @@
   </section>
 
   <script>
-
     function showSection(sectionId, btn) {
       const sections = document.querySelectorAll('.content-section');
       sections.forEach(section => section.style.display = 'none');
-
+    
       const buttons = document.querySelectorAll('.nav-btn');
       buttons.forEach(button => button.classList.remove('active'));
-
-      document.getElementById(sectionId).style.display = 'block';
-      btn.classList.add('active');
-
+    
+      const target = document.getElementById(sectionId);
+      if (target) target.style.display = 'block';
+      if (btn) btn.classList.add('active');
+    
       localStorage.setItem('activeSection', sectionId);
     }
-
+    
     function sortStandings() {
       document.querySelectorAll('#standings table').forEach(table => {
         const tbody = table.tBodies[0];
+        if (!tbody) return;
         const rows = Array.from(tbody.rows);
     
         const data = rows.map(r => ({
-          team: r.cells[1].textContent,
-          wins: parseInt(r.cells[2].textContent),
-          losses: parseInt(r.cells[3].textContent),
-          left: parseInt(r.cells[4].textContent)
+          team: r.cells[1] ? r.cells[1].textContent.trim() : '',
+          wins: r.cells[2] && r.cells[2].textContent.trim() ? parseInt(r.cells[2].textContent, 10) || 0 : 0,
+          losses: r.cells[3] && r.cells[3].textContent.trim() ? parseInt(r.cells[3].textContent, 10) || 0 : 0,
+          left: r.cells[4] && r.cells[4].textContent.trim() ? parseInt(r.cells[4].textContent, 10) || 0 : 0
         }));
     
-        data.sort((a, b) => b.wins - a.wins);
+        data.sort((a, b) => (b.wins - a.wins) || (a.losses - b.losses) || a.team.localeCompare(b.team));
     
         tbody.innerHTML = '';
     
         data.forEach((team, idx) => {
           const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${idx + 1}</td>
-            <td>${team.team}</td>
-            <td>${team.wins}</td>
-            <td>${team.losses}</td>
-            <td>${team.left}</td>
-          `;
-          
-    
+          tr.innerHTML = `<td>${idx + 1}</td><td>${team.team}</td><td>${team.wins}</td><td>${team.losses}</td><td>${team.left}</td>`;
           tbody.appendChild(tr);
         });
       });
     }
     
     function sortPlayerTables() {
-      document.querySelectorAll('#playerStandings table').forEach(table => {
+      document.querySelectorAll('#playerStandings table, #playerStanding table').forEach(table => {
         const tbody = table.tBodies[0];
+        if (!tbody) return;
         const rows = Array.from(tbody.rows);
     
         const data = rows.map(r => ({
-          name: r.cells[1].textContent.trim() || 'N/A',
-          group: r.cells[2].textContent.trim(),
-          points: parseInt(r.cells[3].textContent)
+          name: r.cells[1] ? r.cells[1].textContent.trim() || 'N/A' : 'N/A',
+          group: r.cells[2] ? r.cells[2].textContent.trim() : '',
+          points: r.cells[3] && r.cells[3].textContent.trim() ? parseInt(r.cells[3].textContent, 10) || 0 : 0
         }));
     
-        data.sort((a, b) => b.points - a.points);
+        data.sort((a, b) => (b.points - a.points) || a.name.localeCompare(b.name));
     
         tbody.innerHTML = '';
     
         data.forEach((p, idx) => {
           const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${idx + 1}</td>
-            <td>${p.name}</td>
-            <td>${p.group}</td>
-            <td>${p.points}</td>
-          `;
-          
+          tr.innerHTML = `<td>${idx + 1}</td><td>${p.name}</td><td>${p.group}</td><td>${p.points}</td>`;
           tbody.appendChild(tr);
         });
       });
     }
     
-    window.onload = function() {
+    window.addEventListener('DOMContentLoaded', function() {
+      sortStandings();
+      sortPlayerTables();
       const savedSection = localStorage.getItem('activeSection') || 'standings';
-      const activeBtn = document.querySelector(`.nav-btn[onclick*="${savedSection}"]`);
+      let activeBtn = document.querySelector(`.nav-btn[onclick*="${savedSection}"]`);
+      if (!activeBtn) activeBtn = document.querySelector('.nav-btn');
       showSection(savedSection, activeBtn);
-    };
+    });
+
 
 
 
@@ -708,6 +700,7 @@
 
 </body>
 </html>
+
 
 
 
