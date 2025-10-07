@@ -239,48 +239,68 @@ th {
 
 
 #matchResult {
-    padding: 20px;
-    background-color: #f8f9fa;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f9;
+}
 
-  #matchResult h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 28px;
-    color: #333;
-  }
+#matchResult h2 {
+  font-size: 22px;
+  color: #222;
+  margin: 50px 0 20px;
+  text-transform: uppercase;
+  border-left: 6px solid #007bff;
+  padding-left: 12px;
+}
 
-  .match-result {
-    background-color: #ffffff;
-    border-left: 6px solid #007bff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    transition: transform 0.2s ease;
-  }
+.match-result {
+  background: linear-gradient(to right, #ffffff, #f9f9f9);
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease;
+}
 
-  .match-result:hover {
-    transform: scale(1.02);
-  }
+.match-result:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
 
-  .match-result p {
-    margin: 5px 0;
-    font-size: 16px;
-    color: #444;
-  }
+.match-result p {
+  margin: 6px 0;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.4;
+}
 
-  .match-result p strong {
-    color: #000;
-  }
+.match-result .game-title {
+  font-size: 14px;
+  color: #007bff;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
 
+.match-result .teams {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
 
-  .match-result .score {
-    font-size: 18px;
-    font-weight: bold;
-    color: #222;
-  }
+.match-result .winner {
+  font-size: 15px;
+  font-weight: bold;
+  color: #27ae60;
+  margin-top: 5px;
+}
+
+.match-result .default {
+  color: #d35400;
+  font-style: italic;
+}
 
 
 @media (max-width: 768px) {
@@ -316,5 +336,6 @@ th {
     font-size: 12px;
   }
 }
+
 
 
